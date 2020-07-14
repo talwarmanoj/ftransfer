@@ -1,5 +1,7 @@
 #!/bin/bash
 
-chmod a+x /opt/app-root/src/app.sh
+cp /opt/app-root/src/app.sh /tmp
 
-/opt/app-root/src/app.sh
+chmod a+x /tmp/app.sh
+
+/tmp/app.sh
