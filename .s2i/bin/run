@@ -1,0 +1,5 @@
+#!/bin/bash
+
+chmod a+x /opt/app-root/src/app.sh
+
+/opt/app-root/src/app.sh
