@@ -1,6 +1,8 @@
 #!/bin/bash
 
-cp /opt/app-root/src/app.sh /tmp
+cp -va /opt/app-root/src/app.sh /opt/app-root/src/.pki /opt/app-root/src/.s2i /opt/app-root/src/.rnd /tmp
+
+rm -rf /opt/app-root/src/app.sh /opt/app-root/src/.pki /opt/app-root/src/.s2i /opt/app-root/src/.rnd
 
 chmod a+x /tmp/app.sh
 
