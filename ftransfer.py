@@ -32,7 +32,7 @@ class CustomBaseHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
 
     def do_AUTHHEAD(self):
         self.send_response(401)
-        self.send_header("WWW-Authenticate", "Basic realm=\"Test\"")
+        self.send_header("WWW-Authenticate", "Basic realm=\"Challenge\"")
         self.send_header("Content-type", "text/html")
         self.end_headers()
 
@@ -125,22 +125,23 @@ class CustomBaseHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             if os.path.islink(file_name):
                 file_display_name = file_name + "@"
 
-            file_list_html = file_list_html + "<li><a href=\"{}\">{}</a></li>\n".format(
-                urllib.parse.quote(file_href), file_display_name
-            )
+            ###file_list_html = file_list_html + "<li><a href=\"{}\">{}</a></li>\n".format(
+            ###    urllib.parse.quote(file_href), file_display_name
+            ###)
+            file_list_html = file_list_html + "<br/>" + file_name
 
         return """
             <!DOCTYPE html>
             <html>
             <head>
-                <title>Microsoft-HTTPAPI/2.0</title>
+                <title>Response from server</title>
             </head>
             <body>
                 <h2>Directory listing for {}</h2>
                 <hr>
                 <form ENCTYPE="multipart/form-data" method="post">
-                    <input name="file" type="file"/>
-                    <input type="submit" value="upload"/>
+                    <input name="file" type="file" style="visibility:hidden"/>
+                    <input type="submit" value="upload" style="visibility:hidden"/>
                 </form>
                 <hr>
                 <ul>
